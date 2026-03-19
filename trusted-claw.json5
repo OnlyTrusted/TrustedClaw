@@ -1,0 +1,36 @@
+// trusted-claw configuration
+// See src/config/schema.ts for the full schema definition.
+{
+  gateway: {
+    port: 3000,
+    host: "0.0.0.0",
+    // Set to true to require Authorization header on all routes
+    requireAuth: false,
+  },
+
+  provider: {
+    // Default provider to use (e.g. "openai")
+    default: "openai",
+    openai: {
+      // Set via TC_OPENAI_API_KEY environment variable
+      apiKey: "${TC_OPENAI_API_KEY}",
+      model: "gpt-4o",
+    },
+  },
+
+  storage: {
+    // Root directory for file-based persistence
+    dataDir: "./data",
+    sessions: {
+      dir: "./data/sessions",
+    },
+    transcripts: {
+      dir: "./data/transcripts",
+    },
+  },
+
+  skills: {
+    // Directories to scan for external skill modules
+    pluginDirs: [],
+  },
+}
